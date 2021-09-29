@@ -1,0 +1,35 @@
+.country-card {
+	display: flex;
+	flex-direction: column;
+	padding: 0.5em;
+	width: 23%;
+	margin: 1%;
+	box-shadow: 1px 1px 3px;
+	border-radius: 5px;
+	transition: all 0.5s;
+	background-color: #fff;
+	cursor: pointer;
+}
+
+.country-card:hover {
+	transform: scale(1.05);
+	opacity: 1;
+}
+.country-card img {
+	opacity: 0.6;
+	width: 100%;
+	transition: all 1s;
+}
+.country-card:hover img {
+	opacity: 1;
+}
+.country-card h3 {
+	text-align: center;
+	margin-bottom: 0;
+}
+.country-card p {
+	margin-bottom: 0;
+}
+.country-card p span {
+	font-weight: 600;
+}

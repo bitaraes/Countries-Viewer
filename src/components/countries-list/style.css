@@ -1,0 +1,7 @@
+.countries__container {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px solid;
+	padding: 1em 0.5em;
+}
