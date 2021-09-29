@@ -1,20 +1,27 @@
 import React from "react";
-
 import "./style.css";
 
-export default function CountryCard() {
+export default function CountryCard({ country }) {
 	return (
 		<div className="country-card">
-			<img src="/img/flags/af.png"></img>
-			<h3>Afghanistan</h3>
+			<div className="country-card__img-container">
+				<img
+					src={`/img/flags/${country.alpha2Code.toLowerCase()}.png`}
+					alt={`${country.name} flag`}
+				></img>
+			</div>
+			<h3>{country.name}</h3>
 			<p>
-				<span>Region:</span> Asia
+				<span>Region: </span>
+				{country.region}
 			</p>
 			<p>
-				<span>Capital:</span> Kabul
+				<span>Capital: </span>
+				{country.capital}
 			</p>
 			<p>
-				<span>Domain:</span> .af
+				<span>Domain: </span>
+				{country.topLevelDomain}
 			</p>
 		</div>
 	);

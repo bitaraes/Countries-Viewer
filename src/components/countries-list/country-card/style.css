@@ -15,8 +15,12 @@
 	transform: scale(1.05);
 	opacity: 1;
 }
+
+.country-card__img-container {
+	height: 50%;
+}
 .country-card img {
-	opacity: 0.6;
+	opacity: 0.7;
 	width: 100%;
 	transition: all 1s;
 }
