@@ -1,11 +1,14 @@
-import { Search } from "@material-ui/icons";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
+import { Search } from "@material-ui/icons";
 import "./style.css";
 
-export default function Header() {
-	function handleClick() {
-		console.log("object");
+export default function Header({ fieldFilter }) {
+	const [filterValue, setFilterValue] = useState("");
+
+	function handleClick(event) {
+		fieldFilter(event);
+		setFilterValue("");
 	}
 	return (
 		<header className="header">
@@ -16,11 +19,20 @@ export default function Header() {
 						<input
 							type="search"
 							onKeyPress={(e) => {
-								if (e.key === "Enter") handleClick();
+								if (e.key === "Enter") {
+									handleClick(e.target.value);
+								}
 							}}
 							placeholder="Encontre um país"
+							onChange={(e) => setFilterValue(e.target.value)}
+							value={filterValue}
 						></input>
-						<button onClick={handleClick}>
+						<button
+							onClick={(e) => {
+								handleClick(e.currentTarget.value);
+							}}
+							value={filterValue}
+						>
 							<Search fontSize="small" />
 						</button>
 					</div>

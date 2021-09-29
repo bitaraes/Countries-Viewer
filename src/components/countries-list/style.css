@@ -2,5 +2,29 @@
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	padding: 3.5em 0.5em;
+	padding: 1em 0.5em;
+}
+
+.filtered-countries {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	border: 1px solid;
+}
+
+.filtered-countries > .country-card {
+	width: 40%;
+}
+
+.filtered-countries button {
+	margin-top: 2.5em;
+	padding: 1.25em;
+	border-radius: 1em;
+	border: 1px solid;
+	cursor: pointer;
+}
+
+.filtered-countries button:hover {
+	background-color: #dddddd;
 }
