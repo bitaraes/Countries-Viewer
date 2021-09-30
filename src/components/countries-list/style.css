@@ -10,7 +10,6 @@
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	border: 1px solid;
 }
 
 .filtered-countries > .country-card {
@@ -20,11 +19,21 @@
 .filtered-countries button {
 	margin-top: 2.5em;
 	padding: 1.25em;
-	border-radius: 1em;
+	border-radius: 5px;
 	border: 1px solid;
 	cursor: pointer;
+	background-color: #fff;
+	box-shadow: 1px 1px 2px;
+	transition: 0.3s;
 }
 
 .filtered-countries button:hover {
-	background-color: #dddddd;
+	transform: scale(1.05);
+	box-shadow: 1px 1px 4px;
+}
+
+.countries select {
+	margin: 1em 0 0 1em;
+	border: 1px solid;
+	border-radius: 5px;
 }

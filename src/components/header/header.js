@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { Search } from "@material-ui/icons";
 import "./style.css";
@@ -11,7 +11,7 @@ export default function Header({ fieldFilter }) {
 		setFilterValue("");
 	}
 	return (
-		<header className="header">
+		<header className="header" id="top">
 			<div className="container">
 				<div className="header__container">
 					<span className="header__logo">Countries Viewer</span>
