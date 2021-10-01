@@ -29,7 +29,12 @@ export default function CountriesList({ fieldFilter }) {
 	function mountCountries() {
 		return countries
 			? countries.map((current, index) => {
-					return <CountryCard country={current} key={index} />;
+					return (
+						<CountryCard
+							country={current}
+							key={index}
+						></CountryCard>
+					);
 			  })
 			: null;
 	}
@@ -50,17 +55,18 @@ export default function CountriesList({ fieldFilter }) {
 					onChange={(e) => {
 						filterByRegion(e.target.value);
 					}}
+					defaultValue={"Filter by region"}
 				>
-					<option disabled selected>
+					<option disabled value="Filter by region">
 						Filter by region
 					</option>
-					<option>All</option>
-					<option>Africa</option>
-					<option>Americas</option>
-					<option value="polar">Antarctica</option>
-					<option>Asia</option>
-					<option>Europe</option>
-					<option>Oceania</option>
+					<option value="all">All</option>
+					<option value="africa">Africa</option>
+					<option value="americas">Americas</option>
+					<option value="asia">Asia</option>
+					<option value="europe">Europe</option>
+					<option value="oceania">Oceania</option>
+					<option value="polar">Polar</option>
 				</select>
 				<div className="countries__container">{mountCountries()}</div>
 			</section>
