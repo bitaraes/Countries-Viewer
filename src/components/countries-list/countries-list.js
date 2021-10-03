@@ -1,30 +1,44 @@
 import React, { useState, useEffect } from "react";
 
 import CountryCard from "./country-card/country-card";
-// import { findAllCountries } from "./../../services/api.js";
 import {
-	countriesJson,
-	regionsJson,
-} from "./../../utils/mocks/countriesJson.js";
+	findAllCountries,
+	findByRegion,
+	findByCountry,
+} from "./../../services/api.js";
+
 import "./style.css";
 
 export default function CountriesList({ fieldFilter }) {
 	const [countries, setCountries] = useState(null);
+	const [filter, setFilter] = useState(null);
+	const [region, setRegion] = useState(null);
 
 	useEffect(() => {
-		if (!countries) {
-			seeAll();
-		}
-	}, [countries]);
-	useEffect(() => {
-		if (!!fieldFilter) {
-			const filtered = countries.filter((country) => {
-				console.log(country);
-				return country.name.toLowerCase() === fieldFilter.toLowerCase();
-			});
-			return setCountries(filtered);
-		}
+		setFilter(fieldFilter);
 	}, [fieldFilter]);
+
+	useEffect(() => {
+		async function execute() {
+			if (!region) {
+				setCountries(await findAllCountries());
+			} else {
+				setCountries(await findByRegion(region));
+			}
+		}
+		execute();
+	}, [region]);
+
+	useEffect(() => {
+		async function execute() {
+			if (filter === "" || !filter) {
+				setCountries(await findAllCountries());
+			} else {
+				setCountries(await findByCountry(filter));
+			}
+		}
+		execute();
+	}, [filter]);
 
 	function mountCountries() {
 		return countries
@@ -38,14 +52,11 @@ export default function CountriesList({ fieldFilter }) {
 			  })
 			: null;
 	}
-	function seeAll() {
-		// findAllCountries().then((countries) => setCountries(countries))
-		setCountries(countriesJson);
-	}
+
 	function filterByRegion(event) {
 		const region = event.toLowerCase();
-		console.log(region);
-		region === "all" ? seeAll() : setCountries(regionsJson[region][0]);
+		// region === "all" ? seeAll() : setCountries(findByRegion(region));
+		region === "all" ? setRegion(null) : setRegion(region);
 	}
 
 	return (
